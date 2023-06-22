@@ -1,8 +1,10 @@
 wheel
 cython
+
 ipykernel
 jupyter
 
+python-dotenv
 
 pandas
-python-dotenv
+pyarrow

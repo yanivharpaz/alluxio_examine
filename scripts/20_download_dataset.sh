@@ -12,5 +12,7 @@ for year in {2009..2022}; do
     url="https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_${year}-${month}.parquet"
     # Use wget to download the file
     wget $url
+    sleep 5
   done
+  sleep 60
 done
