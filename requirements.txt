@@ -1,0 +1,8 @@
+wheel
+cython
+ipykernel
+jupyter
+
+
+pandas
+python-dotenv
