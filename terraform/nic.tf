@@ -32,6 +32,7 @@ resource "azurerm_public_ip" "example_windows" {
 }
 
 resource "azurerm_network_interface" "nic_windows" {
+  count               = 2
   name                = "vmnic_windows${count.index}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
