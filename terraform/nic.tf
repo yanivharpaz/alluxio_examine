@@ -1,4 +1,4 @@
-
+# linux NIC
 resource "azurerm_public_ip" "example" {
   count               = 2
   name                = "publicIP${count.index}"
@@ -22,7 +22,7 @@ resource "azurerm_network_interface" "nic" {
   
 }
 
-
+# Windows NIC
 resource "azurerm_public_ip" "example_windows" {
   name                = "publicIP_windows"
   location            = azurerm_resource_group.rg.location

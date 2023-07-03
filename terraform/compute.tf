@@ -1,5 +1,5 @@
 resource "azurerm_windows_virtual_machine" "vm_windows" {
-  count                 = 2
+  count                 = 1
   name                  = "vm_windows${count.index}"
   computer_name         = "vm-win${count.index}"
   resource_group_name   = azurerm_resource_group.rg.name
