@@ -24,14 +24,15 @@ resource "azurerm_network_interface" "nic" {
 
 # Windows NIC
 resource "azurerm_public_ip" "example_windows" {
-  name                = "publicIP_windows"
+  count               = 2
+  name                = "publicIP_windows${count.index}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
 }
 
 resource "azurerm_network_interface" "nic_windows" {
-  name                = "vmnic_windows"
+  name                = "vmnic_windows${count.index}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -39,6 +40,6 @@ resource "azurerm_network_interface" "nic_windows" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet1.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.example_windows.id
+    public_ip_address_id          = azurerm_public_ip.example_windows[count.index].id
   }
 }
