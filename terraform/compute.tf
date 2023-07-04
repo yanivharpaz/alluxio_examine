@@ -1,5 +1,5 @@
 resource "azurerm_windows_virtual_machine" "vm_windows" {
-  count                 = 2
+  count                 = 1
   name                  = "vm_windows${count.index}"
   computer_name         = "vm-win${count.index}"
   resource_group_name   = azurerm_resource_group.rg.name
@@ -21,13 +21,6 @@ resource "azurerm_windows_virtual_machine" "vm_windows" {
     version   = "latest"
     }
 
-#   source_image_reference {
-#     publisher = "MicrosoftWindowsServer"
-#     offer     = "WindowsServer"
-#     sku       = "2016-Datacenter"
-#     version   = "latest"
-#   }
-
   # provisioner "local-exec" {
   #   command = <<EOH
   #     hostname
@@ -42,7 +35,7 @@ resource "azurerm_windows_virtual_machine" "vm_windows" {
 
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  count                 = 2
+  count                 = 1
   name                  = "vm-all-1${count.index}"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
