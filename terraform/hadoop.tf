@@ -12,7 +12,7 @@ resource "azurerm_hdinsight_hadoop_cluster" "example" {
   gateway {
     # enabled  = true
     username = "adminuser"
-    password = "Password1@"
+    password = "P@$$w0rd123!"
   }
 
   storage_account {
@@ -25,20 +25,20 @@ resource "azurerm_hdinsight_hadoop_cluster" "example" {
     head_node {
       vm_size  = "A6"
       username = "adminuser"
-      password = "Password1"
+      password = "P@$$w0rd123!"
     }
 
     worker_node {
       vm_size               = "A6"
       username              = "adminuser"
-      password              = "Password1"
+      password              = "P@$$w0rd123!"
       target_instance_count = 2
     }
 
     zookeeper_node {
       vm_size  = "A6"
       username = "adminuser"
-      password = "Password1"
+      password = "P@$$w0rd123!"
     }
   }
 }
