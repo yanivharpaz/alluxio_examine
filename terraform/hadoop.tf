@@ -10,7 +10,7 @@ resource "azurerm_hdinsight_hadoop_cluster" "example" {
   }
 
   gateway {
-    enabled  = true
+    # enabled  = true
     username = "adminuser"
     password = "Password1@"
   }
