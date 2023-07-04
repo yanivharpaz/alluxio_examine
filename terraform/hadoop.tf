@@ -44,7 +44,7 @@ resource "azurerm_hdinsight_hadoop_cluster" "example" {
 }
 
 resource "azurerm_storage_account" "example" {
-  name                     = "examplestorageacc"
+  name                     = "stghadoop230704"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
