@@ -11,6 +11,8 @@ data/*.parquet
 .terraform/
 .terraform.lock.hcl
 
+*.tfvars
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
