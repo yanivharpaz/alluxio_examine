@@ -1,12 +1,13 @@
 resource "azurerm_windows_virtual_machine" "vm_windows" {
-  count                 = 0
-  name                  = "vm_windows${count.index}"
-  computer_name         = "vm-win${count.index}"
+  count                 = var.vm_windows_count
+  name                  = "vm_win-xio-${count.index}"
+  # explicit computer name (overrides default)
+  computer_name         = "vm-win-xio-${count.index}"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
   size                  = "Standard_B1ls"
-  admin_username        = "adminuser"
-  admin_password        = "P@$$w0rd123!"
+  admin_username        = var.hdinsight_user_name
+  admin_password        = var.hdinsight_user_password
   network_interface_ids = [azurerm_network_interface.nic_windows[count.index].id]
 
   os_disk {
@@ -35,15 +36,15 @@ resource "azurerm_windows_virtual_machine" "vm_windows" {
 
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  count                           = 0
-  name                            = "vm-all-1${count.index}"
+  count                           = var.vm_linux_count
+  name                            = "vm-lin-xio-${count.index}"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
   size                            = "Standard_B1ls"
-  admin_username                  = "adminuser"
-  admin_password                  = "P@$$w0rd123!"
+  admin_username                  = var.linux_user_name
+  admin_password                  = var.linux_user_password
   disable_password_authentication = false
-  network_interface_ids           = [azurerm_network_interface.nic[count.index].id]
+  network_interface_ids           = [azurerm_network_interface.nic_linux[count.index].id]
 
   os_disk {
     caching              = "ReadWrite"

@@ -1,14 +1,14 @@
 # linux NIC
-resource "azurerm_public_ip" "example" {
-  count               = 2
+resource "azurerm_public_ip" "public_ips_linux" {
+  count               = var.vm_linux_count
   name                = "publicIP${count.index}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
 }
 
-resource "azurerm_network_interface" "nic" {
-  count               = 2
+resource "azurerm_network_interface" "nic_linux" {
+  count               = var.vm_linux_count
   name                = "vmnic${count.index}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
@@ -17,7 +17,7 @@ resource "azurerm_network_interface" "nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.subnet1.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.example[count.index].id
+    public_ip_address_id          = azurerm_public_ip.public_ips_linux[count.index].id
   }
 
 }
