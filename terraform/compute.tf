@@ -14,12 +14,12 @@ resource "azurerm_windows_virtual_machine" "vm_windows" {
     storage_account_type = "Standard_LRS"
   }
 
-    source_image_reference {
+  source_image_reference {
     publisher = "MicrosoftWindowsDesktop"
     offer     = "Windows-10"
     sku       = "win10-21h2-entn"
     version   = "latest"
-    }
+  }
 
   # provisioner "local-exec" {
   #   command = <<EOH
@@ -35,16 +35,16 @@ resource "azurerm_windows_virtual_machine" "vm_windows" {
 
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  count                 = 1
-  name                  = "vm-all-1${count.index}"
-  resource_group_name   = azurerm_resource_group.rg.name
-  location              = azurerm_resource_group.rg.location
-  size                  = "Standard_B1ls"
-  admin_username        = "adminuser"
-  admin_password        = "P@$$w0rd123!"
+  count                           = 1
+  name                            = "vm-all-1${count.index}"
+  resource_group_name             = azurerm_resource_group.rg.name
+  location                        = azurerm_resource_group.rg.location
+  size                            = "Standard_B1ls"
+  admin_username                  = "adminuser"
+  admin_password                  = "P@$$w0rd123!"
   disable_password_authentication = false
-  network_interface_ids  = [azurerm_network_interface.nic[count.index].id]
-  
+  network_interface_ids           = [azurerm_network_interface.nic[count.index].id]
+
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
@@ -56,11 +56,11 @@ resource "azurerm_linux_virtual_machine" "vm" {
     sku       = "18.04-LTS"
     version   = "latest"
   }
-  
+
   custom_data = base64encode(<<-EOF
               #!/bin/bash
               sudo apt-get update
               sudo apt-get install -y docker.io openjdk-8-jdk gcc git python3-pip
               EOF
-              )
+  )
 }
