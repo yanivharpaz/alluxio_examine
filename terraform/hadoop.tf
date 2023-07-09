@@ -30,7 +30,7 @@ resource "azurerm_hdinsight_hadoop_cluster" "example" {
 
     worker_node {
       # vm_size               = "A6"
-      vm_size               = "Standard_A2_v2"
+      vm_size               = "Standard_D2_V2"
       username              = "adminuser"
       password              = "P@$$w0rd123!"
       target_instance_count = 2
@@ -38,7 +38,7 @@ resource "azurerm_hdinsight_hadoop_cluster" "example" {
 
     zookeeper_node {
       # vm_size  = "A6"
-      vm_size  = "Standard_A2_v2"
+      vm_size  = "Standard_D2_V2"
       username = "adminuser"
       password = "P@$$w0rd123!"
     }

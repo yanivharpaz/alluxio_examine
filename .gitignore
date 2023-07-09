@@ -4,6 +4,8 @@ data/*.csv
 data/*.json
 data/*.parquet
 
+*.tfplan
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
