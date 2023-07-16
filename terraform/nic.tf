@@ -1,10 +1,12 @@
 # linux NIC
 resource "azurerm_public_ip" "public_ips_linux" {
-  count               = var.vm_linux_count
-  name                = "publicIP${count.index}"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  allocation_method   = "Dynamic"
+  count                   = var.vm_linux_count
+  name                    = "publicIP${count.index}"
+  location                = azurerm_resource_group.rg.location
+  resource_group_name     = azurerm_resource_group.rg.name
+  allocation_method       = "Dynamic"
+  domain_name_label       = "vm-lin-xio-${count.index}" # Unique DNS Name
+  idle_timeout_in_minutes = 30
 }
 
 resource "azurerm_network_interface" "nic_linux" {
@@ -22,13 +24,18 @@ resource "azurerm_network_interface" "nic_linux" {
 
 }
 
+# ---------------------
 # Windows NIC
+# ---------------------
+
 resource "azurerm_public_ip" "example_windows" {
-  count               = 2
-  name                = "publicIP_windows${count.index}"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  allocation_method   = "Dynamic"
+  count                   = 2
+  name                    = "publicIP_windows${count.index}"
+  location                = azurerm_resource_group.rg.location
+  resource_group_name     = azurerm_resource_group.rg.name
+  allocation_method       = "Dynamic"
+  domain_name_label       = "vm-win-xio-${count.index}" # Unique DNS Name
+  idle_timeout_in_minutes = 30
 }
 
 resource "azurerm_network_interface" "nic_windows" {

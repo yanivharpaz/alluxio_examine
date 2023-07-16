@@ -1,6 +1,6 @@
 resource "azurerm_windows_virtual_machine" "vm_windows" {
-  count                 = var.vm_windows_count
-  name                  = "vm_win-xio-${count.index}"
+  count = var.vm_windows_count
+  name  = "vm_win-xio-${count.index}"
   # explicit computer name (overrides default)
   computer_name         = "vm-win-xio-${count.index}"
   resource_group_name   = azurerm_resource_group.rg.name
