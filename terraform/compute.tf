@@ -5,7 +5,7 @@ resource "azurerm_windows_virtual_machine" "vm_windows" {
   computer_name         = "vm-win-xio-${count.index}"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_B1ls"
+  size                  = "Standard_D4s_v3"
   admin_username        = var.hdinsight_user_name
   admin_password        = var.hdinsight_user_password
   network_interface_ids = [azurerm_network_interface.nic_windows[count.index].id]
@@ -40,7 +40,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                            = "vm-lin-xio-${count.index}"
   resource_group_name             = azurerm_resource_group.rg.name
   location                        = azurerm_resource_group.rg.location
-  size                            = "Standard_B1ls"
+  size                            = "Standard_D4s_v3"
   admin_username                  = var.linux_user_name
   admin_password                  = var.linux_user_password
   disable_password_authentication = false
@@ -61,7 +61,10 @@ resource "azurerm_linux_virtual_machine" "vm" {
   custom_data = base64encode(<<-EOF
               #!/bin/bash
               sudo apt-get update
+              sudo apt install -y apt-transport-https conntrack git mc ncdu zsh htop gcc net-tools jq
               sudo apt-get install -y docker.io openjdk-8-jdk gcc git python3-pip
+              sudo apt install -y ca-certificates curl gnupg-agent software-properties-common
+
               EOF
   )
 }
