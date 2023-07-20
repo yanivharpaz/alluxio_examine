@@ -36,7 +36,8 @@ This project contains Terraform configurations to set up various resources on Mi
 
 5. Plan the deployment. This will show you what changes will be made without actually making any changes.
 
-   ```bash
+   ```
+   bash
    terraform plan -out=myplan01.tfplan
    ```
 
