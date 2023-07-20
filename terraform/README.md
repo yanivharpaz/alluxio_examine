@@ -37,9 +37,9 @@ This project contains Terraform configurations to set up various resources on Mi
 5. Plan the deployment. This will show you what changes will be made without actually making any changes.
 
    ```
-   bash
-   terraform plan -out=myplan01.tfplan
-   ```
+   bash  
+   terraform plan -out=myplan01.tfplan  
+   ```  
 
 6. If the plan looks good, apply the changes. This will create the resources in Azure as per the configuration files.
 
