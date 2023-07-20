@@ -62,8 +62,10 @@ resource "azurerm_linux_virtual_machine" "vm" {
               #!/bin/bash
               sudo apt-get update
               sudo apt install -y apt-transport-https conntrack git mc ncdu zsh htop gcc net-tools jq
-              sudo apt-get install -y docker.io openjdk-8-jdk gcc git python3-pip
+              sudo apt install -y docker.io openjdk-8-jdk python3-pip
               sudo apt install -y ca-certificates curl gnupg-agent software-properties-common
+              sudo usermod -aG docker adminuser
+              sudo service docker restart
 
               EOF
   )

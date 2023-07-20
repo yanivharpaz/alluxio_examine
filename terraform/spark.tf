@@ -1,22 +1,21 @@
-resource "azurerm_hdinsight_hadoop_cluster" "clstr-hadoop01" {
-  name                = "hdicluster23070401"
+resource "azurerm_hdinsight_spark_cluster" "clstr-spark01" {
+  name                = "spark-cluster01"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   cluster_version     = "4.0"
   tier                = "Standard"
 
   component_version {
-    hadoop = "3.1"
+    spark = "2.4"
   }
 
   gateway {
-    # enabled  = true
     username = var.hdinsight_user_name
     password = var.hdinsight_user_password
   }
 
   storage_account {
-    storage_container_id = azurerm_storage_container.stg-container.id
+    storage_container_id = azurerm_storage_container.stg-container-spark.id
     storage_account_key  = azurerm_storage_account.stg-hadoop.primary_access_key
     is_default           = true
   }
@@ -29,7 +28,6 @@ resource "azurerm_hdinsight_hadoop_cluster" "clstr-hadoop01" {
     }
 
     worker_node {
-      # vm_size               = "A6"
       vm_size               = "Standard_D3_V2"
       username              = var.hdinsight_user_name
       password              = var.hdinsight_user_password
@@ -37,7 +35,6 @@ resource "azurerm_hdinsight_hadoop_cluster" "clstr-hadoop01" {
     }
 
     zookeeper_node {
-      # vm_size  = "A6"
       vm_size  = "Standard_D3_V2"
       username = var.hdinsight_user_name
       password = var.hdinsight_user_password
@@ -45,16 +42,8 @@ resource "azurerm_hdinsight_hadoop_cluster" "clstr-hadoop01" {
   }
 }
 
-resource "azurerm_storage_account" "stg-hadoop" {
-  name                     = "stghadoop230704"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
-
-resource "azurerm_storage_container" "stg-container" {
-  name                  = "stgcontainer230704"
+resource "azurerm_storage_container" "stg-container-spark" {
+  name                  = "stgcontainerspark230704"
   storage_account_name  = azurerm_storage_account.stg-hadoop.name
   container_access_type = "private"
 }
