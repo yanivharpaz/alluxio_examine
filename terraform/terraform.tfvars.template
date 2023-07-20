@@ -1,0 +1,14 @@
+
+vm_linux_count   = 3
+vm_windows_count = 2
+
+hdinsight_user_name     = "admin"
+hdinsight_user_password = "PPPXXXYYY"
+
+windows_user_name     = "admin"
+windows_user_password = "PPPXXXYYY"
+
+linux_user_name     = "admin"
+linux_user_password = "PPPXXXYYY"
+
+
