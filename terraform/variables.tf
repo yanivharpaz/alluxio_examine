@@ -15,7 +15,6 @@ variable "hdinsight_user_name" {
 
 variable "hdinsight_user_password" {
   type      = string
-  default   = "P@$$w0rd123!"
   sensitive = true
 }
 
