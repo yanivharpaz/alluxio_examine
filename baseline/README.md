@@ -1,4 +1,4 @@
-Spark basic:  
+# PySpark basic sanity group by test:  
 ```
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import rand
