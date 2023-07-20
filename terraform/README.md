@@ -30,9 +30,10 @@ This project contains Terraform configurations to set up various resources on Mi
 
 4. Initialize Terraform in the directory. This will download the necessary provider plugins.
 
-   ```bash
-   terraform init
-   ```
+   ```  
+   bash  
+   terraform init  
+   ```  
 
 5. Plan the deployment. This will show you what changes will be made without actually making any changes.
 
