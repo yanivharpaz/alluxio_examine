@@ -1,0 +1,1 @@
+      - ALLUXIO_JAVA_OPTS=-Dalluxio.master.hostname=alluxio-master -Dalluxio.master.mount.table.root.ufs=wasb://data01@stgtaxidataset.blob.core.windows.net/  -Dfs.azure.secure.mode=true -Dfs.azure.account.key.stgtaxidataset.blob.core.windows.net="YqbOr743v9ouXg/AyumlVfk+lKyaQv8wbs+bl6JkkAtEYUz6BYMEDpT31Eb2qvdnV/DlizQZ1+Y0+ASt/W759g==" 

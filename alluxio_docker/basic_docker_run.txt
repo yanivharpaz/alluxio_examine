@@ -1,0 +1,6 @@
+docker run -d --net=host -p 19999:19999 \
+  -e ALLUXIO_JAVA_OPTS="-Dalluxio.master.hostname=localhost -Dalluxio.master.mount.table.root.ufs=hdfs://localhost:9000" \
+  alluxio/alluxio master
+docker run -d --net=host -p 19998:19998 \
+  -e ALLUXIO_JAVA_OPTS="-Dalluxio.worker.memory.size=1G -Dalluxio.master.hostname=localhost" \
+  alluxio/alluxio worker

@@ -1,0 +1,30 @@
+version: '3'
+services:
+  alluxio-master:
+    image: alluxio/alluxio:latest
+    environment:
+      - ALLUXIO_JAVA_OPTS=-Dalluxio.master.hostname=alluxio-master -Dalluxio.master.mount.table.root.ufs=hdfs://namenode:9000
+    command: master
+    ports:
+      - 19999:19999 # Alluxio Web UI
+    networks:
+      - alluxio_net
+
+  alluxio-worker1:
+    image: alluxio/alluxio:latest
+    environment:
+      - ALLUXIO_JAVA_OPTS=-Dalluxio.worker.memory.size=1G -Dalluxio.master.hostname=alluxio-master
+    command: worker
+    networks:
+      - alluxio_net
+
+  alluxio-worker2:
+    image: alluxio/alluxio:latest
+    environment:
+      - ALLUXIO_JAVA_OPTS=-Dalluxio.worker.memory.size=1G -Dalluxio.master.hostname=alluxio-master
+    command: worker
+    networks:
+      - alluxio_net
+
+networks:
+  alluxio_net:

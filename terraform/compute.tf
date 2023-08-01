@@ -66,6 +66,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
               sudo apt install -y ca-certificates curl gnupg-agent software-properties-common
               sudo usermod -aG docker adminuser
               sudo service docker restart
+              sudo apt install -y docker-compose
 
               EOF
   )
